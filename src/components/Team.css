@@ -1,0 +1,12 @@
+td{
+    height: 34px;
+    width: 34px;
+}
+tbody::after{
+    height: 50px;
+    content: " ";
+    display: block;
+}
+.team__head-column{
+    border: 1px solid black;
+}
