@@ -12,7 +12,6 @@ export default class Team extends React.Component{
         };
         this.vacations = []
     }
-
     componentDidMount(){
         this.generateVacationsArray();
     }

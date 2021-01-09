@@ -11,8 +11,7 @@ export default class Table extends React.Component{
         this.state = {
             days: this.countDays(this.props.currentDate)
         };
-    }
-
+    };
     render(){
         return (
             <table>
@@ -29,9 +28,6 @@ export default class Table extends React.Component{
                         </td>
                     </tr>
                 </thead>
-                {/* <Team currentDate={this.props.currentDate} name={"frontEnd"}/>
-                <Team currentDate={this.props.currentDate} name={"backEnd"}/>
-                <Team currentDate={this.props.currentDate} name={"designers"}/> */}
                 {
                 teams.map((team,index) => {
                     return <Team currentDate={this.props.currentDate} team={team} key={index}/>

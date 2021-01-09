@@ -25,7 +25,6 @@ export default class MonthPicker extends React.Component{
         </div>
         )
     }
-
     changeDate(direction){
         this.props.changeDate(direction);
     }
