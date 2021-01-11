@@ -1,7 +1,8 @@
 import React from "react";
 import './App.css';
-import MonthPicker from "./components/MonthPicker"
-import Table from "./components/Table"
+import MonthPicker from "./components/MonthPicker";
+import Table from "./components/Table";
+import Footer from "./components/Footer";
 
 export default class App extends React.Component{
   constructor(){
@@ -17,6 +18,7 @@ export default class App extends React.Component{
       <div className="app-wrapper">
       <MonthPicker changeDate={this.changeDate} currentDate={this.state.currentDate}/>
       <Table currentDate={this.state.currentDate}/>
+      <Footer currentDate={this.state.currentDate}/>
       </div>
     )
   }

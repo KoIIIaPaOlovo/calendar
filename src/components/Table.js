@@ -2,7 +2,8 @@ import React from "react";
 import dayNames from "../additions/dayNames";
 import './Table.css';
 import Team from "./Team"
-import teams from '../additions/teams'
+import teams from '../additions/teams';
+import Footer from "./Footer";
 
 export default class Table extends React.Component{
     constructor(props){
@@ -33,9 +34,8 @@ export default class Table extends React.Component{
                     return <Team currentDate={this.props.currentDate} team={team} key={index}/>
                 })
                 }
-                <tfoot>
-                    
-                </tfoot>
+        
+                            
             </table>
         )
     }
