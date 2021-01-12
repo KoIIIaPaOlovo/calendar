@@ -5,8 +5,6 @@ import "./Team.css";
 export default class Team extends React.Component {
   constructor(props) {
     super(props);
-    this.generateVacationsArray = this.generateVacationsArray.bind(this);
-    this.countMembersSum = this.countMembersSum.bind(this);
     let days = this.props.days;
     let vacations = this.generateVacationsArray(
       this.props.team.participants,
@@ -69,7 +67,7 @@ export default class Team extends React.Component {
             return (
               <tr key={index}>
                 <td className="team__head-column">{member.name}</td>
-                {this.outputDays()}
+                {this.outputDays(member)}
                 <td>
                   {this.state.membersSum.map((memberSum) => {
                     if (memberSum.userId === member.id) {
@@ -90,8 +88,8 @@ export default class Team extends React.Component {
     let tempVacations = [];
     participants.forEach((member) => {
       member.vacations.forEach((vacation) => {
-        let endDate = this.sliceEndDate(vacation.duration, currentDate);
-        let startDate = this.sliceStartDate(vacation.duration, currentDate);
+        let endDate = this.sliceDate(vacation.duration, currentDate, "end");
+        let startDate = this.sliceDate(vacation.duration, currentDate, "start");
         tempVacations.push({
           userId: member.id,
           startDate: startDate,
@@ -125,101 +123,92 @@ export default class Team extends React.Component {
     return tempSumArray;
   }
 
-  outputDays() {
+  outputDays(member) {
     let arrayOfElements = [];
     for (let index = 1; index <= this.state.days; index++) {
       let dayName =
-        dayNames[
-          new Date(
-            this.props.currentDate.getFullYear(),
-            this.props.currentDate.getMonth(),
-            index,
-          ).getDay()
-        ];
+        dayNames[this.getDayFromNumber(this.props.currentDate, index).getDay()];
       if (dayName === "Вс" || dayName === "Сб") {
-        arrayOfElements.push(<td key={index} className="weekend"></td>);
+        if (member) {
+          arrayOfElements.push(this.createOutputDay(member, index, "weekend"));
+        } else {
+          arrayOfElements.push(<td key={index} className="weekend"></td>);
+        }
       } else {
-        arrayOfElements.push(<td key={index}></td>);
+        if (member) {
+          arrayOfElements.push(this.createOutputDay(member, index, ""));
+        } else {
+          arrayOfElements.push(<td key={index}></td>);
+        }
       }
     }
     return arrayOfElements;
+  }
+
+  createOutputDay(member, index, className) {
+    return (
+      <td key={index} className={"vacation-wrapper " + className}>
+        {this.state.vacations.map((vacation, vacindex) => {
+          if (
+            vacation.userId === member.id &&
+            Date.parse(vacation.startDate) ===
+              Date.parse(this.getDayFromNumber(this.props.currentDate, index))
+          ) {
+            return this.createOutputVacation(vacindex, vacation);
+          } else {
+            return null;
+          }
+        })}
+      </td>
+    );
+  }
+
+  createOutputVacation(index, vacation) {
+    return (
+      <div
+        key={index}
+        style={{
+          width:
+            this.countSumWithoutHolidays(vacation.startDate, vacation.endDate) *
+              34 -
+            6 +
+            "px",
+        }}
+        className={"vacation " + vacation.type.toLowerCase()}
+      >
+        {vacation.type}
+      </div>
+    );
   }
 
   hideTeam() {
     this.setState({ isShown: !this.state.isShown });
   }
 
-  sliceEndDate(duration, currentDate) {
-    let endDate = duration.slice(13);
-    let endDateNumber = Date.parse(
-      new Date(
-        endDate.slice(6, 10),
-        +endDate.slice(3, 5) - 1,
-        endDate.slice(0, 2),
-      ),
-    );
+  sliceDate(duration, currentDate, position) {
+    let date = position === "end" ? duration.slice(13) : duration.slice(0, 10);
+    let dateNumber = Date.parse(this.countDateFromString(date));
 
     if (
-      endDateNumber >
-      Date.parse(
-        new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0),
-      )
+      dateNumber < Date.parse(this.getFirstDay(currentDate)) &&
+      position === "start"
     ) {
-      return new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-    } else {
-      return new Date(
-        endDate.slice(6, 10),
-        +endDate.slice(3, 5) - 1,
-        endDate.slice(0, 2),
-      );
+      return this.getFirstDay(currentDate);
     }
-  }
-
-  sliceStartDate(duration, currentDate) {
-    let startDate = duration.slice(0, 10);
-    let startDateNumber = Date.parse(
-      new Date(
-        startDate.slice(6, 10),
-        +startDate.slice(3, 5) - 1,
-        startDate.slice(0, 2),
-      ),
-    );
-
-    if (
-      startDateNumber <
-      Date.parse(new Date(currentDate.getFullYear(), currentDate.getMonth(), 1))
-    ) {
-      return new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    } else {
-      return new Date(
-        startDate.slice(6, 10),
-        +startDate.slice(3, 5) - 1,
-        startDate.slice(0, 2),
-      );
+    if (dateNumber > this.getLastDay(currentDate) && position === "end") {
+      return this.getLastDay(currentDate);
     }
+
+    return this.countDateFromString(date);
   }
 
   countDateDifference(startDate, endDate, currentDate, days) {
-    let endDateNumber = Date.parse(
-      new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()),
-    );
-    let startDateNumber = Date.parse(
-      new Date(
-        startDate.getFullYear(),
-        startDate.getMonth(),
-        startDate.getDate(),
-      ),
-    );
+    let endDateNumber = this.countDateNumber(endDate);
+    let startDateNumber = this.countDateNumber(startDate);
+    let sumWithoutHolidays = this.countSumWithoutHolidays(startDate, endDate);
 
-    let sumWithoutHolidays =
-      (endDateNumber - startDateNumber) / (1000 * 60 * 60 * 24) + 1;
-
-    for (let index = 0; index < days; index++) {
-      let tempDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        index + 1,
-      );
+    for (let index = 1; index <= days; index++) {
+      let tempDate = this.getDayFromNumber(currentDate, index);
       if (
         Date.parse(tempDate) >= startDateNumber &&
         Date.parse(tempDate) <= endDateNumber
@@ -232,6 +221,47 @@ export default class Team extends React.Component {
         }
       }
     }
+
     return sumWithoutHolidays >= 0 ? sumWithoutHolidays : 0;
+  }
+
+  countSumWithoutHolidays(startDate, endDate) {
+    let endDateNumber = this.countDateNumber(endDate);
+    let startDateNumber = this.countDateNumber(startDate);
+
+    let sumWithoutHolidays =
+      (endDateNumber - startDateNumber) / (1000 * 60 * 60 * 24) + 1;
+
+    return sumWithoutHolidays;
+  }
+
+  countDateNumber(date) {
+    return Date.parse(
+      new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+    );
+  }
+
+  countDateFromString(dateString) {
+    return new Date(
+      dateString.slice(6, 10),
+      +dateString.slice(3, 5) - 1,
+      dateString.slice(0, 2),
+    );
+  }
+
+  getLastDay(currentDate) {
+    return new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+  }
+
+  getFirstDay(currentDate) {
+    return new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  }
+
+  getDayFromNumber(currentDate, dayNumber) {
+    return new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      dayNumber,
+    );
   }
 }
