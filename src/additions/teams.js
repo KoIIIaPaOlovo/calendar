@@ -7,7 +7,7 @@ const teams = [
         name: "FE_MEMBER_1",
         vacations: [
           {
-            duration: "08.01.2021 - 11.01.2021",
+            duration: "20.12.2020 - 22.02.2021",
             type: "Pd",
           },
         ],
@@ -33,6 +33,10 @@ const teams = [
         vacations: [
           {
             duration: "08.01.2021 - 11.01.2021",
+            type: "UnPd",
+          },
+          {
+            duration: "29.01.2021 - 20.02.2021",
             type: "UnPd",
           },
         ],
