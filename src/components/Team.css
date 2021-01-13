@@ -8,6 +8,12 @@ tbody::after {
   content: " ";
   display: block;
 }
+
+.team__head {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr;
+}
+
 .team__head-column {
   border: 1px solid black;
 }
