@@ -3,6 +3,7 @@ import dayNames from "../additions/dayNames";
 import "./Table.css";
 import Team from "./Team";
 import teams from "../additions/teams";
+import Footer from "../components/Footer";
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,10 @@ export default class Table extends React.Component {
             />
           );
         })}
-        <tfoot></tfoot>
+       <Footer
+       currentDate={this.props.currentDate}
+       days={this.state.days}
+       teams={teams}/>
       </table>
     );
   }
