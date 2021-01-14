@@ -34,10 +34,10 @@ export default class Table extends React.Component {
             />
           );
         })}
-         <Footer
+       <Footer
        currentDate={this.props.currentDate}
        days={this.state.days}
-       teams={teams}/>   
+       teams={teams}/>
       </table>
     );
   }

@@ -99,6 +99,7 @@ export default class Team extends React.Component {
       });
     });
     return tempVacations;
+    
   }
 
   countMembersSum(participants, vacations, currentDate, days) {
