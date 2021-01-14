@@ -1,6 +1,5 @@
 import React from "react";
 import dayNames from "../additions/dayNames";
-import Team from "./Team";
 import teams from "../additions/teams";
 
 class Footer extends React.Component {

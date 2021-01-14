@@ -4,6 +4,10 @@ import "./Table.css";
 import Team from "./Team";
 import teams from "../additions/teams";
 import Footer from "../components/Footer";
+import Modals from "../components/Modal";
+import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+
+
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +22,7 @@ export default class Table extends React.Component {
         <thead>
           <tr>
             <td className="firstColumn">
-              <button>+ Add Vacation</button>
+              <Modals/>    
             </td>
             {this.outputHead()}
             <td>Sum</td>
@@ -34,10 +38,11 @@ export default class Table extends React.Component {
             />
           );
         })}
-       <Footer
-       currentDate={this.props.currentDate}
-       days={this.state.days}
-       teams={teams}/>
+        <Footer
+          currentDate={this.props.currentDate}
+          days={this.state.days}
+          teams={teams}
+        />
       </table>
     );
   }
