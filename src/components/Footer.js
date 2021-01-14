@@ -113,7 +113,6 @@ class Footer extends React.Component {
     if (dateNumber > this.getLastDay(currentDate) && position === "end") {
       return this.getLastDay(currentDate);
     }
-
     return this.countDateFromString(date);
   }
   countDateFromString(dateString) {
@@ -126,7 +125,6 @@ class Footer extends React.Component {
   getLastDay(currentDate) {
     return new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
   }
-
   getFirstDay(currentDate) {
     return new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   }
