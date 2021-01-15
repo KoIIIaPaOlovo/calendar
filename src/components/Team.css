@@ -8,8 +8,24 @@ tbody::after {
   content: " ";
   display: block;
 }
+
+.team__head {
+  display: grid;
+  grid-template-columns: 1fr 30px 45px 10px;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  grid-column-gap: 10px;
+}
+
+.team__name {
+  font-size: 12px;
+  font-weight: 600;
+
+}
+
 .team__head-column {
-  border: 1px solid black;
+  border: 1px solid rgba(126, 126, 126, 0.3);
 }
 
 .vacation-wrapper {
@@ -18,18 +34,177 @@ tbody::after {
 
 .vacation {
   position: absolute;
-  height: 30px;
+  box-sizing: border-box;
+  height: 29px;
   width: 0px;
   left: 3px;
   top: 2px;
+  color: white;
   background-color: aqua;
   z-index: 10;
+  border-radius: 5px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
 }
 
 .vacation.unpd {
   background-color: rgba(0, 255, 255, 0.5);
+}
+
+.frontend .team__percent {
+  background-color: #9b99ff;
+}
+
+.team__percent {
+  font-size: 12px;
+  color: white;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35px;
+  height: 20px;
+  background-color: #9b99ff;
+}
+
+.team__amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-size: 12px;
+  color: #949494;
+}
+
+.team__amount svg {
+  margin-right: 5px;
+}
+
+.team__arrow {
+  transition: 100ms ease-out;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.team__arrow--rotated {
+  transform: rotate(180deg);
+}
+
+.team__member-head {
+  font-size: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.team__summary-col {
+  text-align: center;
+  font-size: 12px;
+}
+
+.frontend .team__head-column {
+  border-left: 3px solid #9b99ff;
+}
+
+.frontend .team__member-head {
+  border-left: 3px solid #9b99ff;
+}
+
+.frontend .vacation {
+  background-color: #9b99ff;
+  border: 1px solid #9b99ff;
+}
+
+.frontend .vacation.unpd {
+  background-color: rgba(155, 153, 255, 0.1);
+  color: #9b99ff;
+  font-weight: 600;
+}
+
+.frontend tr:first-child {
+  background-color: rgba(155, 153, 255, 0.1);
+}
+
+.backend .team__percent {
+  background-color: #ff9999;
+}
+
+.backend .team__head-column {
+  border-left: 3px solid #ff9999;
+}
+
+.backend .team__member-head {
+  border-left: 3px solid #ff9999;
+}
+
+.backend .vacation {
+  background-color: #ff9999;
+  border: 1px solid #ff9999;
+}
+
+.backend .vacation.unpd {
+  background-color: rgba(255, 153, 153, 0.1);
+  color: #ff9999;
+  font-weight: 600;
+}
+
+.backend tr:first-child {
+  background-color: rgba(255, 153, 153, 0.1);
+}
+
+.designers .team__percent {
+  background-color: #7aafff;
+}
+
+.designers .team__head-column {
+  border-left: 3px solid #7aafff;
+}
+
+.designers .team__member-head {
+  border-left: 3px solid #7aafff;
+}
+
+.designers .vacation {
+  background-color: #7aafff;
+  border: 1px solid#7AAFFF;
+}
+
+.designers .vacation.unpd {
+  background-color: rgba(122, 175, 255, 0.1);
+  color: #7aafff;
+  font-weight: 600;
+}
+
+.designers tr:first-child {
+  background-color: rgba(122, 175, 255, 0.1);
+}
+
+.managers .team__percent {
+  background-color: #ffa768;
+}
+
+.managers .team__head-column {
+  border-left: 3px solid #ffa768;
+}
+
+.managers .team__member-head {
+  border-left: 3px solid #ffa768;
+}
+
+.managers .vacation {
+  background-color: #ffa768;
+  border: 1px solid #ffa768;
+}
+
+.managers .vacation.unpd {
+  background-color: rgba(255, 167, 104, 0.1);
+  color: #ffa768;
+  font-weight: 600;
+}
+
+.managers tr:first-child {
+  background-color: rgba(255, 167, 104, 0.1);
 }

@@ -25,7 +25,7 @@ export default class Table extends React.Component {
               <Modals/>    
             </td>
             {this.outputHead()}
-            <td>Sum</td>
+            <td className="sum-column">Sum</td>
           </tr>
         </thead>
         {teams.map((team, index) => {
@@ -66,16 +66,16 @@ export default class Table extends React.Component {
         ];
       if (dayName === "Вс" || dayName === "Сб") {
         arrayOfElements.push(
-          <td key={index} className="weekend">
+          <td key={index} className="head__day weekend">
             <p>{index}</p>
-            <p>{dayName}</p>
+            <span>{dayName}</span>
           </td>,
         );
       } else {
         arrayOfElements.push(
-          <td key={index}>
+          <td key={index} className="head__day">
             <p>{index}</p>
-            <p>{dayName}</p>
+            <span>{dayName}</span>
           </td>,
         );
       }
