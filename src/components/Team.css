@@ -1,12 +1,35 @@
-td{
-    height: 34px;
-    width: 34px;
+td {
+  height: 34px;
+  width: 34px;
+  box-sizing: border-box;
 }
-tbody::after{
-    height: 50px;
-    content: " ";
-    display: block;
+tbody::after {
+  height: 50px;
+  content: " ";
+  display: block;
 }
-.team__head-column{
-    border: 1px solid black;
+.team__head-column {
+  border: 1px solid black;
+}
+
+.vacation-wrapper {
+  position: relative;
+}
+
+.vacation {
+  position: absolute;
+  height: 30px;
+  width: 0px;
+  left: 3px;
+  top: 2px;
+  background-color: aqua;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.vacation.unpd {
+  background-color: rgba(0, 255, 255, 0.5);
 }
