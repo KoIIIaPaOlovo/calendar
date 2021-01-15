@@ -2,10 +2,10 @@ import React from 'react'
 import { Button, Header, Modal } from 'semantic-ui-react';
 import "./Modal.css";
 
-
-function Modals() {
+  function Modals() {
     const [open, setOpen] = React.useState(false);
-    return (  
+    return (
+
         <Modal
           closeIcon
           open={open}
@@ -35,17 +35,21 @@ function Modals() {
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={() => setOpen(false)} className="modal__close">
-              Cancel
+                  Cancel
             </Button>
             <Button onClick={() => setOpen(false)} className="modal__send">
-              Send
+                 Send
             </Button>
           </Modal.Actions>
         </Modal>
-     
+      
     );
   }
 
 
+
+
 export default Modals;
+
+
 
