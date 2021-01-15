@@ -1,7 +1,6 @@
 import React from "react";
 import dayNames from "../additions/dayNames";
-import Team from "./Team";
-import teams from "../additions/teams";
+import "./Footer.css";
 
 class Footer extends React.Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class Footer extends React.Component {
     return (
       <tfoot>
         <tr>
-          <td className="tfoot">Day-person-starts </td>
+          <td className="tfoot__title">Day-person-starts </td>
           {this.outputDays()}
           <td></td>
         </tr>
