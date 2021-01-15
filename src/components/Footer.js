@@ -2,6 +2,7 @@ import React from "react";
 import dayNames from "../additions/dayNames";
 import Team from "./Team";
 import teams from "../additions/teams";
+import "./Footer.css"
 
 class Footer extends React.Component {
   constructor(props) {
@@ -42,6 +43,19 @@ class Footer extends React.Component {
           {this.outputDays()}
           <td></td>
         </tr>
+        <div className="footer__descr">
+          <div className="footer__title">
+            <p>September teams Summary</p>
+          </div>
+          <div className="footer__text">
+            <p>On vacation</p>
+            <div className="team__block">
+              <div className="team__count"></div>
+              <span className="team__quantity">15</span>
+            </div>
+            <span className="team__vacation">12%</span>
+          </div>
+        </div>
       </tfoot>
     );
   }
