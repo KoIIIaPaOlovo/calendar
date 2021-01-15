@@ -56,6 +56,9 @@ export default class Team extends React.Component {
           <td className="team__head-column">
             <div className="team__head">
               {this.props.team.realm}
+              <div className="team-percent">
+                {this.countTeamPercent() + "%"}
+              </div>
               <button onClick={() => this.hideTeam()}>Hide</button>
             </div>
           </td>
@@ -90,6 +93,9 @@ export default class Team extends React.Component {
       member.vacations.forEach((vacation) => {
         let endDate = this.sliceDate(vacation.duration, currentDate, "end");
         let startDate = this.sliceDate(vacation.duration, currentDate, "start");
+        if(Date.parse(endDate)<=Date.parse(startDate)){
+          return;
+        }
         tempVacations.push({
           userId: member.id,
           startDate: startDate,
@@ -184,6 +190,20 @@ export default class Team extends React.Component {
 
   hideTeam() {
     this.setState({ isShown: !this.state.isShown });
+  }
+
+  countTeamPercent() {
+    let fullSum = 0;
+    let fullDays = this.state.days * this.props.team.participants.length;
+    this.state.vacations.forEach((vacation) => {
+      console.dir(vacation);
+      fullSum += this.countSumWithoutHolidays(
+        vacation.startDate,
+        vacation.endDate,
+      );
+    });
+    
+    return Math.round(fullSum / fullDays * 100);
   }
 
   sliceDate(duration, currentDate, position) {
