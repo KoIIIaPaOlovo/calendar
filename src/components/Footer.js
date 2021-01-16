@@ -161,13 +161,11 @@ class Footer extends React.Component {
     let fullSum = 0;
     let fullDays = this.props.days * this.state.participants;
     this.state.vacations.forEach((vacation) => {
-      // console.dir(vacation);
       fullSum += this.countSumWithoutHolidays(
         vacation.startDate,
         vacation.endDate,
       );
     });
-    // console.log(fullDays);
     return Math.round((fullSum / fullDays) * 100);
   }
 
@@ -175,12 +173,10 @@ class Footer extends React.Component {
     let participantsQuantity = this.props.teams.map((item) => {
       return item.participants.length;
     });
-    console.log(participantsQuantity);
     let participants = participantsQuantity.reduce(add, 0);
     function add(accumulator, a) {
       return accumulator + a;
     }
-    console.log(participants);
     return participants;
   }
   countSumWithoutHolidays(startDate, endDate) {
