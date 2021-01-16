@@ -4,6 +4,10 @@ import "./Table.css";
 import Team from "./Team";
 import teams from "../additions/teams";
 import Footer from "../components/Footer";
+import Modals from "../components/Modal";
+import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+
+
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +22,10 @@ export default class Table extends React.Component {
         <thead>
           <tr>
             <td className="firstColumn">
-              <button>+ Add Vacation</button>
+              <Modals/>    
             </td>
             {this.outputHead()}
-            <td>Sum</td>
+            <td className="sum-column">Sum</td>
           </tr>
         </thead>
         {teams.map((team, index) => {
@@ -34,10 +38,11 @@ export default class Table extends React.Component {
             />
           );
         })}
-       <Footer
-       currentDate={this.props.currentDate}
-       days={this.state.days}
-       teams={teams}/>
+        <Footer
+          currentDate={this.props.currentDate}
+          days={this.state.days}
+          teams={teams}
+        />
       </table>
     );
   }
@@ -61,16 +66,16 @@ export default class Table extends React.Component {
         ];
       if (dayName === "Вс" || dayName === "Сб") {
         arrayOfElements.push(
-          <td key={index} className="weekend">
+          <td key={index} className="head__day weekend">
             <p>{index}</p>
-            <p>{dayName}</p>
+            <span>{dayName}</span>
           </td>,
         );
       } else {
         arrayOfElements.push(
-          <td key={index}>
+          <td key={index} className="head__day">
             <p>{index}</p>
-            <p>{dayName}</p>
+            <span>{dayName}</span>
           </td>,
         );
       }

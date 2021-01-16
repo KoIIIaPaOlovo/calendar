@@ -2,7 +2,7 @@ import React from "react";
 import dayNames from "../additions/dayNames";
 import Team from "./Team";
 import teams from "../additions/teams";
-import "./Footer.css"
+import "./Footer.css";
 
 class Footer extends React.Component {
   constructor(props) {
@@ -12,9 +12,11 @@ class Footer extends React.Component {
       this.props.teams.participants,
       this.props.currentDate,
     );
+    let participants = this.obtainParticipants(this.props.teams.participants);
     this.state = {
       days: days,
       vacations: vacations,
+      participants: participants,
     };
   }
 
@@ -29,9 +31,12 @@ class Footer extends React.Component {
         this.props.teams.participants,
         this.props.currentDate,
       );
+      let participants = this.obtainParticipants(this.props.teams.participants);
+
       this.setState({
         days: days,
         vacations: vacations,
+        participants: participants,
       });
     }
   }
@@ -39,7 +44,7 @@ class Footer extends React.Component {
     return (
       <tfoot>
         <tr>
-          <td className="tfoot">Day-person-starts </td>
+          <td className="tfoot__title">Day-person-starts </td>
           {this.outputDays()}
           <td></td>
         </tr>
@@ -51,9 +56,11 @@ class Footer extends React.Component {
             <p>On vacation</p>
             <div className="team__block">
               <div className="team__count"></div>
-              <span className="team__quantity">15</span>
+              <span className="team__quantity">{this.state.participants}</span>
             </div>
-            <span className="team__vacation">12%</span>
+            <span className="team__vacation">
+              {this.countTeamPercent() + "%"}
+            </span>
           </div>
         </div>
       </tfoot>
@@ -142,16 +149,52 @@ class Footer extends React.Component {
   getFirstDay(currentDate) {
     return new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   }
-  countDateNumber(date) {
-    return Date.parse(
-      new Date(date.getFullYear(), date.getMonth(), date.getDate()),
-    );
-  }
+
   getDayFromNumber(currentDate, dayNumber) {
     return new Date(
       currentDate.getFullYear(),
       currentDate.getMonth(),
       dayNumber,
+    );
+  }
+  countTeamPercent() {
+    let fullSum = 0;
+    let fullDays = this.props.days * this.state.participants;
+    this.state.vacations.forEach((vacation) => {
+      // console.dir(vacation);
+      fullSum += this.countSumWithoutHolidays(
+        vacation.startDate,
+        vacation.endDate,
+      );
+    });
+    // console.log(fullDays);
+    return Math.round((fullSum / fullDays) * 100);
+  }
+
+  obtainParticipants() {
+    let participantsQuantity = this.props.teams.map((item) => {
+      return item.participants.length;
+    });
+    console.log(participantsQuantity);
+    let participants = participantsQuantity.reduce(add, 0);
+    function add(accumulator, a) {
+      return accumulator + a;
+    }
+    console.log(participants);
+    return participants;
+  }
+  countSumWithoutHolidays(startDate, endDate) {
+    let endDateNumber = this.countDateNumber(endDate);
+    let startDateNumber = this.countDateNumber(startDate);
+
+    let sumWithoutHolidays =
+      (endDateNumber - startDateNumber) / (1000 * 60 * 60 * 24) + 1;
+
+    return sumWithoutHolidays;
+  }
+  countDateNumber(date) {
+    return Date.parse(
+      new Date(date.getFullYear(), date.getMonth(), date.getDate()),
     );
   }
 }
