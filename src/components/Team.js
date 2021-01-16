@@ -246,6 +246,7 @@ export default class Team extends React.Component {
   countTeamPercent() {
     let fullSum = 0;
     let fullDays = this.state.days * this.props.team.participants.length;
+    console.log(this.props.team.participants);
     this.state.vacations.forEach((vacation) => {
       console.dir(vacation);
       fullSum += this.countSumWithoutHolidays(
