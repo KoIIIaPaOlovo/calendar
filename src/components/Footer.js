@@ -20,9 +20,7 @@ class Footer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps !== this.props
-    ) {
+    if (prevProps !== this.props) {
       let days = this.props.days;
       let vacations = this.generateVacationsArray(
         this.props.teams.participants,
@@ -45,21 +43,13 @@ class Footer extends React.Component {
           {this.outputDays()}
           <td></td>
         </tr>
-        <div className="footer__descr">
-          <div className="footer__title">
-            <p>September teams Summary</p>
-          </div>
-          <div className="footer__text">
-            <p>On vacation</p>
-            <div className="team__block">
-              <div className="team__count"></div>
-              <span className="team__quantity">{this.state.participants}</span>
-            </div>
-            <span className="team__vacation">
-              {this.countTeamPercent() + "%"}
-            </span>
-          </div>
-        </div>
+        <tr className="footer__title">September teams Summary </tr>
+        <tr className="footer__text">
+          <td className="footer__descr">On vacation</td>
+          <td className="team__count"></td>
+          <td className="team__quantity">{this.state.participants}</td>
+          <td className="team__vacation">{this.countTeamPercent() + "%"}</td>
+        </tr>
       </tfoot>
     );
   }
@@ -149,9 +139,8 @@ class Footer extends React.Component {
     function add(accumulator, a) {
       return accumulator + a;
     }
-    
+
     return participants;
   }
-
 }
 export default Footer;
