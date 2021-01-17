@@ -1,0 +1,72 @@
+.team__block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.team__quantity {
+    display: inline-block;
+}
+
+.team__count {
+    background: url('../components/icon.svg') center center/cover no-repeat;
+    width: 12px;
+    height: 12px;
+    margin-right: 3px;
+}
+
+.team__vacation {
+    display: block;
+    padding: 0 4px;
+    border-radius: 2px;
+    background-color: #9b99ff;
+    color: #fff;
+    font-size: 12px;
+}
+
+.footer__descr {
+    margin-top: 30px;
+}
+
+.footer__text {
+    display: flex;
+    align-items: center;
+}
+
+.footer__text p {
+    display: block;
+    margin: 0;
+}
+
+.footer__title {
+    border: 0px;
+}
+
+.footer__title p {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(126, 126, 126, 0.3);
+}
+
+.footer__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+    margin-top: 12px;
+}
+
+tfoot {
+    text-align: center;
+    font-size: 14px;
+}
+
+.tfoot__title {
+    font-size: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: left;
+    font-weight: 600;
+}
