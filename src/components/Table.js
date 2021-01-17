@@ -3,9 +3,7 @@ import dayNames from "../additions/dayNames";
 import "./Table.css";
 import Team from "./Team";
 import Footer from "../components/Footer";
-import Modals from "../components/Modal";
-import dateFunctions from "../utils/dateFunctions"
-
+import dateFunctions from "../utils/dateFunctions";
 
 
 export default class Table extends React.Component {
@@ -14,6 +12,7 @@ export default class Table extends React.Component {
     this.state = {
       days: dateFunctions.countDays(this.props.currentDate),
     };
+    
   }
   render() {
     return (
@@ -21,7 +20,9 @@ export default class Table extends React.Component {
         <thead>
           <tr>
             <td className="firstColumn">
-              <Modals/>    
+            <button onClick={() => {
+            this.showModal();
+          }} className="add-vacation">+ Add Vacation</button>  
             </td>
             {this.outputHead()}
             <td className="sum-column">Sum</td>
@@ -80,6 +81,9 @@ export default class Table extends React.Component {
       }
     }
     return arrayOfElements;
+  }
+  showModal(){
+    this.props.showModal();
   }
 
 }
