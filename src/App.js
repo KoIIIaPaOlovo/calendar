@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 import MonthPicker from "./components/MonthPicker";
 import Table from "./components/Table";
-import teams from "./additions/teams"
+import teams from "./additions/teams";
+import Modal from "./components/Modal";
 
 
 export default class App extends React.Component {
@@ -12,8 +13,10 @@ export default class App extends React.Component {
       currentDate: new Date(),
       isLoading: true,
       teams: [],
+      isOpenModal:false,
     };
     this.changeDate = this.changeDate.bind(this);
+    this.showModal=this.showModal.bind(this);
   }
 
   componentWillMount() {
@@ -21,15 +24,19 @@ export default class App extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading){
+      return <Modal isLoading={this.state.isLoading} isOpenModal={this.state.isOpenModal} showModal={this.showModal}/>
+    } else { 
     return (
       <div className="app-wrapper">
         <MonthPicker
           changeDate={this.changeDate}
           currentDate={this.state.currentDate}
         />
-        <Table teams={this.state.teams} isLoading={this.state.isLoading} currentDate={this.state.currentDate} />
+        <Table teams={this.state.teams} isLoading={this.state.isLoading} currentDate={this.state.currentDate} showModal={this.showModal} />
+        <Modal isLoading={this.state.isLoading} isOpenModal={this.state.isOpenModal} showModal={this.showModal}/>
       </div>
-    );
+    );}
   }
 
   changeDate(direction) {
@@ -70,4 +77,9 @@ export default class App extends React.Component {
         .catch(alert);
     }, 1000);
   }
+
+  showModal() {
+    this.setState({isOpenModal:!this.state.isOpenModal});
+  }
+  
 }
