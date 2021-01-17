@@ -5,7 +5,7 @@ import Team from "./Team";
 import teams from "../additions/teams";
 import Footer from "../components/Footer";
 import Modals from "../components/Modal";
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+
 
 
 export default class Table extends React.Component {
