@@ -194,7 +194,7 @@ export default class Team extends React.Component {
         dayNames[
           dateFunctions.getDayFromNumber(this.props.currentDate, index).getDay()
         ];
-      if (dayName === "Вс" || dayName === "Сб") {
+      if (dayName === "Su" || dayName === "St") {
         if (member) {
           arrayOfElements.push(this.createOutputDay(member, index, "weekend"));
         } else {
