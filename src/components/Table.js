@@ -7,6 +7,7 @@ import Modals from "../components/Modal";
 import dateFunctions from "../utils/dateFunctions"
 
 
+
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
