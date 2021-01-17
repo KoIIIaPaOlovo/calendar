@@ -65,7 +65,7 @@ class Footer extends React.Component {
             index,
           ).getDay()
         ];
-      if (dayName === "Вс" || dayName === "Сб") {
+      if (dayName === "Su" || dayName === "St") {
         arrayOfElements.push(<td key={index} className="weekend"></td>);
       } else {
         arrayOfElements.push(

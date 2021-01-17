@@ -1,24 +1,12 @@
 import React from "react";
 import "./MonthPicker.css";
+import monthNames from "../additions/monthNames";
+
+
 export default class MonthPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      monthNames: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
-    };
+    ;
   }
 
   render() {
@@ -42,7 +30,7 @@ export default class MonthPicker extends React.Component {
         </svg>
 
         <p className="month-picker__month">
-          {this.state.monthNames[this.props.currentDate.getMonth()] +
+          {monthNames[this.props.currentDate.getMonth()] +
             " " +
             this.props.currentDate.getFullYear()}
         </p>
