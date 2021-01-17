@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import MonthPicker from "./components/MonthPicker";
 import Table from "./components/Table";
+import teams from "./additions/teams"
 
 
 export default class App extends React.Component {
@@ -9,8 +10,14 @@ export default class App extends React.Component {
     super();
     this.state = {
       currentDate: new Date(),
+      isLoading: true,
+      teams: [],
     };
     this.changeDate = this.changeDate.bind(this);
+  }
+
+  componentWillMount() {
+    this.send(teams);
   }
 
   render() {
@@ -20,7 +27,7 @@ export default class App extends React.Component {
           changeDate={this.changeDate}
           currentDate={this.state.currentDate}
         />
-        <Table currentDate={this.state.currentDate} />
+        <Table teams={this.state.teams} isLoading={this.state.isLoading} currentDate={this.state.currentDate} />
       </div>
     );
   }
@@ -43,5 +50,24 @@ export default class App extends React.Component {
         ),
       });
     }
+  }
+
+  send() {
+    let context = this;
+    setTimeout(() => {
+      fetch("https://jsonplaceholder.typicode.com/posts/", {
+        method: "get",
+      })
+        .then(function () {
+          return teams;
+        })
+        .then(function (data) {
+          context.setState({ isLoading: false });
+          context.setState({ teams: data });
+          console.log(context.state.isLoading);
+          console.log(context.state.teams);
+        })
+        .catch(alert);
+    }, 1000);
   }
 }

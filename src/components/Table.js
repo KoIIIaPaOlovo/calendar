@@ -2,18 +2,17 @@ import React from "react";
 import dayNames from "../additions/dayNames";
 import "./Table.css";
 import Team from "./Team";
-import teams from "../additions/teams";
 import Footer from "../components/Footer";
 import Modals from "../components/Modal";
+import dateFunctions from "../utils/dateFunctions"
 
 
 
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.countDays = this.countDays.bind(this);
     this.state = {
-      days: this.countDays(this.props.currentDate),
+      days: dateFunctions.countDays(this.props.currentDate),
     };
   }
   render() {
@@ -28,7 +27,7 @@ export default class Table extends React.Component {
             <td className="sum-column">Sum</td>
           </tr>
         </thead>
-        {teams.map((team, index) => {
+        {this.props.teams.map((team, index) => {
           return (
             <Team
               currentDate={this.props.currentDate}
@@ -41,7 +40,7 @@ export default class Table extends React.Component {
         <Footer
           currentDate={this.props.currentDate}
           days={this.state.days}
-          teams={teams}
+          teams={this.props.teams}
         />
       </table>
     );
@@ -49,7 +48,7 @@ export default class Table extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentDate !== prevProps.currentDate) {
-      this.setState({ days: this.countDays(this.props.currentDate) });
+      this.setState({ days: dateFunctions.countDays(this.props.currentDate) });
     }
   }
 
@@ -83,7 +82,4 @@ export default class Table extends React.Component {
     return arrayOfElements;
   }
 
-  countDays(date) {
-    return 33 - new Date(date.getFullYear(), date.getMonth(), 33).getDate();
-  }
 }
