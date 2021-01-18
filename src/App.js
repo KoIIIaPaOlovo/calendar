@@ -5,7 +5,6 @@ import Table from "./components/Table";
 import teams from "./additions/teams";
 import Modal from "./components/Modal";
 
-
 export default class App extends React.Component {
   constructor() {
     super();
@@ -13,10 +12,11 @@ export default class App extends React.Component {
       currentDate: new Date(),
       isLoading: true,
       teams: [],
-      isOpenModal:false,
+      isOpenModal: false,
     };
     this.changeDate = this.changeDate.bind(this);
-    this.showModal=this.showModal.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.send = this.send.bind(this);
   }
 
   componentWillMount() {
@@ -24,19 +24,40 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading){
-      return <Modal isLoading={this.state.isLoading} isOpenModal={this.state.isOpenModal} showModal={this.showModal}/>
-    } else { 
-    return (
-      <div className="app-wrapper">
-        <MonthPicker
-          changeDate={this.changeDate}
+    if (this.state.isLoading) {
+      return (
+        <Modal
+          isLoading={this.state.isLoading}
+          isOpenModal={this.state.isOpenModal}
+          showModal={this.showModal}
           currentDate={this.state.currentDate}
+          teams={this.state.teams}
         />
-        <Table teams={this.state.teams} isLoading={this.state.isLoading} currentDate={this.state.currentDate} showModal={this.showModal} />
-        <Modal isLoading={this.state.isLoading} isOpenModal={this.state.isOpenModal} showModal={this.showModal}/>
-      </div>
-    );}
+      );
+    } else {
+      return (
+        <div className="app-wrapper">
+          <MonthPicker
+            changeDate={this.changeDate}
+            currentDate={this.state.currentDate}
+          />
+          <Table
+            teams={this.state.teams}
+            isLoading={this.state.isLoading}
+            currentDate={this.state.currentDate}
+            showModal={this.showModal}
+          />
+          <Modal
+            isLoading={this.state.isLoading}
+            isOpenModal={this.state.isOpenModal}
+            showModal={this.showModal}
+            currentDate={this.state.currentDate}
+            teams={this.state.teams}
+            send={this.send}
+          />
+        </div>
+      );
+    }
   }
 
   changeDate(direction) {
@@ -59,7 +80,8 @@ export default class App extends React.Component {
     }
   }
 
-  send() {
+  send(teams) {
+    this.setState({ isLoading: true });
     let context = this;
     setTimeout(() => {
       fetch("https://jsonplaceholder.typicode.com/posts/", {
@@ -71,15 +93,12 @@ export default class App extends React.Component {
         .then(function (data) {
           context.setState({ isLoading: false });
           context.setState({ teams: data });
-          console.log(context.state.isLoading);
-          console.log(context.state.teams);
         })
         .catch(alert);
     }, 1000);
   }
 
   showModal() {
-    this.setState({isOpenModal:!this.state.isOpenModal});
+    this.setState({ isOpenModal: !this.state.isOpenModal });
   }
-  
 }

@@ -4,7 +4,7 @@ import "./Table.css";
 import Team from "./Team";
 import Footer from "../components/Footer";
 import dateFunctions from "../utils/dateFunctions";
-
+import PropTypes from 'prop-types';
 
 export default class Table extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ export default class Table extends React.Component {
     this.state = {
       days: dateFunctions.countDays(this.props.currentDate),
     };
-    
   }
   render() {
     return (
@@ -20,9 +19,14 @@ export default class Table extends React.Component {
         <thead>
           <tr>
             <td className="firstColumn">
-            <button onClick={() => {
-            this.showModal();
-          }} className="add-vacation">+ Add Vacation</button>  
+              <button
+                onClick={() => {
+                  this.showModal();
+                }}
+                className="add-vacation"
+              >
+                + Add Vacation
+              </button>
             </td>
             {this.outputHead()}
             <td className="sum-column">Sum</td>
@@ -82,8 +86,14 @@ export default class Table extends React.Component {
     }
     return arrayOfElements;
   }
-  showModal(){
+  showModal() {
     this.props.showModal();
   }
-
 }
+
+Table.propTypes = {
+  teams: PropTypes.array,
+  isLoading: PropTypes.bool,
+  currentDate: PropTypes.object,
+  showModal: PropTypes.func,
+};

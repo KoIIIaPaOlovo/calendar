@@ -1,7 +1,9 @@
 import React from "react";
 import dayNames from "../additions/dayNames";
 import dateFunctions from "../utils/dateFunctions";
+import monthNames from "../additions/monthNames";
 import "./Footer.css";
+import PropTypes from 'prop-types';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -43,7 +45,11 @@ class Footer extends React.Component {
           {this.outputDays()}
           <td></td>
         </tr>
-        <tr className="footer__title">September teams Summary </tr>
+        <tr className="footer__title">
+          <td>
+            {monthNames[this.props.currentDate.getMonth()]} teams Summary
+          </td>
+        </tr>
         <tr className="footer__text">
           <td className="footer__descr">On vacation</td>
           <td className="team__count"></td>
@@ -93,7 +99,7 @@ class Footer extends React.Component {
             currentDate,
             "start",
           );
-          if (Date.parse(endDate) <= Date.parse(startDate)) {
+          if (Date.parse(endDate) < Date.parse(startDate)) {
             return;
           }
           tempVacations.push({
@@ -144,3 +150,9 @@ class Footer extends React.Component {
   }
 }
 export default Footer;
+
+Footer.propTypes = {
+  currentDate: PropTypes.object,
+  days: PropTypes.number,
+  teams: PropTypes.array
+};
