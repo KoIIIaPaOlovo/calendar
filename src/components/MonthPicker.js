@@ -1,12 +1,11 @@
 import React from "react";
 import "./MonthPicker.css";
 import monthNames from "../additions/monthNames";
-
+import PropTypes from 'prop-types';
 
 export default class MonthPicker extends React.Component {
   constructor(props) {
     super(props);
-    ;
   }
 
   render() {
@@ -58,3 +57,8 @@ export default class MonthPicker extends React.Component {
     this.props.changeDate(direction);
   }
 }
+
+MonthPicker.propTypes = {
+  changeDate: PropTypes.func,
+  currentDate: PropTypes.object
+};

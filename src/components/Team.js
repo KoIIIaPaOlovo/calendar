@@ -2,6 +2,7 @@ import React from "react";
 import dayNames from "../additions/dayNames";
 import "./Team.css";
 import dateFunctions from "../utils/dateFunctions";
+import PropTypes from 'prop-types';
 
 export default class Team extends React.Component {
   constructor(props) {
@@ -26,9 +27,7 @@ export default class Team extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps !== this.props
-    ) {
+    if (prevProps !== this.props) {
       let days = this.props.days;
       let vacations = this.generateVacationsArray(
         this.props.team.participants,
@@ -151,7 +150,7 @@ export default class Team extends React.Component {
           currentDate,
           "start",
         );
-        if (Date.parse(endDate) <= Date.parse(startDate)) {
+        if (Date.parse(endDate) < Date.parse(startDate)) {
           return;
         }
         tempVacations.push({
@@ -268,5 +267,11 @@ export default class Team extends React.Component {
 
     return Math.round((fullSum / fullDays) * 100);
   }
-
 }
+
+Team.propTypes = {
+  currentDate: PropTypes.object,
+  team: PropTypes.object,
+  days: PropTypes.number,
+};
+

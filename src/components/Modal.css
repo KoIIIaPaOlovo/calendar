@@ -1,289 +1,306 @@
 .modal-wrapper--hidden {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    width: 400px;
-    padding-bottom: 15px;
-    background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  padding-bottom: 15px;
+  background-color: white;
 }
 
 .modal {
-    z-index: 100;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(0, 0, 0, 0.26);
-    border-radius: 5px;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: 200ms ease-in;
-    flex-direction: column;
+  z-index: 100;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: 200ms ease-in;
+  flex-direction: column;
 }
 
 .modal-hidden {
-    display: none;
+  display: none;
 }
 
 .modal-header {
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    background-color: #eaeaea;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0px;
-    width: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0px;
+  width: 100%;
 }
 
 .modal__title {
-    font-weight: bold;
-    margin-left: 30px;
+  font-weight: bold;
+  margin-left: 30px;
 }
 
 .modal__days-count {
-    padding-right: 25px;
+  padding-right: 25px;
 }
 
 .modal__subtitle {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .modal__form {
-    padding: 15px 30px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__input-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 30px;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  margin-bottom: 30px;
 }
 
 .modal__input-label {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.4;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .modal__input {
-    border: none;
-    border-bottom: 1px solid #d0d0d0;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.4;
-    transition: 150ms ease-in;
+  border: none;
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: 150ms ease-in;
 }
 
 .modal__input:focus {
-    border-color: black;
-    outline: none;
+  border-color: black;
+  outline: none;
 }
 
 .modal__select {
-    padding: 12px 15px 11px 15px;
-    border: none;
-    font-size: 12px;
-    line-height: 1.2;
-    background-color: #e9e9e9;
-    border-radius: 3px;
-    border-right: 15px solid #e9e9e9;
+  padding: 12px 15px 11px 15px;
+  border: none;
+  font-size: 12px;
+  line-height: 1.2;
+  background-color: #e9e9e9;
+  border-radius: 3px;
+  border-right: 15px solid #e9e9e9;
 }
 
 .modal__select:focus {
-    outline: none;
+  outline: none;
 }
 
 .actions {
-    margin-top: 55px;
-    margin-left: -30px;
-    margin-right: -30px;
-    padding: 15px 30px 0px 30px;
-    border-top: 1px solid #d0d0d0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 30px;
+  margin-top: 55px;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 15px 30px 0px 30px;
+  border-top: 1px solid #d0d0d0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
 }
 
 .modal__close {
-    width: 153px;
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-    height: 42px;
-    border: none;
-    border: 1px solid #d0d0d0;
-    background-color: transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
+  width: 153px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border: none;
+  border: 1px solid #d0d0d0;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
 }
 
 .modal__close:focus {
-    outline: none;
+  outline: none;
 }
 
 .modal__send {
-    width: 153px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    align-items: center;
-    height: 42px;
-    border: none;
-    border: 1px solid #48ba46;
-    background-color: #48ba46;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    margin-right: 20px;
+  width: 153px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  height: 42px;
+  border: none;
+  border: 1px solid #48ba46;
+  background-color: #48ba46;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.modal__send:disabled {
+  opacity: 0.5;
 }
 
 .modal__send:focus {
-    outline: none;
+  outline: none;
 }
 
 .modal--loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal__loader {
-    position: relative;
-    font-size: 150px;
-    line-height: 1;
-    color: rgb(77, 77, 77);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 130px;
-    width: 130px;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    animation: 0.5s ease-in infinite modalLoader;
-    transform-origin: center center;
+  position: relative;
+  font-size: 150px;
+  line-height: 1;
+  color: rgb(77, 77, 77);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  width: 130px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  animation: 0.5s ease-in infinite modalLoader;
+  transform-origin: center center;
 }
 
 .modal__loader--error {
-    background-color: red;
-    border-radius: 50%;
-    color: white;
-    animation: none;
-    transform: rotate(45deg);
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  animation: none;
+  transform: rotate(45deg);
 }
 
 @keyframes modalLoader {
-    0% {
-        transform: rotate(0px);
-    }
-    80% {
-        transform: rotate(90deg);
-    }
-    100% {
-        transform: rotate(90deg);
-    }
+  0% {
+    transform: rotate(0px);
+  }
+  80% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
 }
 
 .modal__message {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .modal__description-text {
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
 }
 
 .button-inner {
-    height: 40px;
-    border-radius: 7px;
-    background-color: #48ba46;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    transition: all linear 0.2s;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    width: 144px;
-    margin-right: auto;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #48ba46;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all linear 0.2s;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  width: 144px;
+  margin-right: auto;
 }
 
 .modal__buttons {
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 
 .loading__descr {
-    font-size: 24px;
-    font-weight: bold;
-    color: #48ba46;
-    ;
+  font-size: 24px;
+  font-weight: bold;
+  color: #48ba46;
+  margin-bottom: 10px;
 }
 
 .loader__block {
-    position: absolute;
-    top: 200px;
-    right: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #9b99ff;
-    border-right: 16px solid #7aafff;
-    border-bottom: 16px solid #ff9999;
-    border-left: 16px solid #ffa768;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #9b99ff;
+  border-right: 16px solid #7aafff;
+  border-bottom: 16px solid #ff9999;
+  border-left: 16px solid #ffa768;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.modal__days-count span {
+  color: red;
 }

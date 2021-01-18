@@ -1,7 +1,6 @@
 import dayNames from "../additions/dayNames";
 
 const dateFunctions = {
-
   countSumWithoutHolidays(startDate, endDate) {
     let endDateNumber = this.countDateNumber(endDate);
     let startDateNumber = this.countDateNumber(startDate);
@@ -54,8 +53,8 @@ const dateFunctions = {
         Date.parse(tempDate) <= endDateNumber
       ) {
         if (
-          dayNames[tempDate.getDay()] === "Вс" ||
-          dayNames[tempDate.getDay()] === "Сб"
+          dayNames[tempDate.getDay()] === "Su" ||
+          dayNames[tempDate.getDay()] === "St"
         ) {
           sumWithoutHolidays = sumWithoutHolidays - 1;
         }
@@ -84,8 +83,7 @@ const dateFunctions = {
 
   countDays(date) {
     return 33 - new Date(date.getFullYear(), date.getMonth(), 33).getDate();
-  }
-  
+  },
 };
 
 export default dateFunctions;
