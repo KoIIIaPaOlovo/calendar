@@ -1,20 +1,56 @@
-table{
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
-td{
-    height: 50px;
-    border: 1px solid black;
-    width: 34px;
-    text-align: center;
-}
-
-.firstColumn{
-    width: 200px;
-    border: 0px;
+td {
+  height: 34px;
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  width: 34px;
 }
 
-.weekend{
-    background-color: gray;
+.firstColumn {
+  width: 260px;
+  border: 0px;
+  vertical-align: top;
+}
+
+.head__day {
+  text-align: center;
+  font-size: 12px;
+  height: 64px;
+}
+
+.head__day span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.weekend {
+  background-color: #f0f0f0;
+}
+
+.add-vacation {
+  width: 144px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #48ba46;
+  border-radius: 7px;
+  color: white;
+  font-size: 14px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.add-vacation span {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.sum-column {
+  font-size: 12px;
+  text-align: center;
+  background: #f3f3f3;
 }
